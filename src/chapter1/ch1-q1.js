@@ -11,14 +11,39 @@
  * @return {boolean}      True if unique characters, otherwise false
  */
 export function hasUniqueCharactersSet(str) {
-  let chars = new Set();
+  // Original Solution
+  // let chars = new Set();
 
-  for (let i = 0; i < str.length; ++i) {
-    if (chars.has(str[i])) {
-      return false;
+  // for (let i = 0; i < str.length; ++i) {
+  //   if (chars.has(str[i])) {
+  //     return false;
+  //   }
+  //   chars.add(str[i]);
+  // }
+  // return true;
+
+  // My Solution Using Hash Map
+  // let stringMap = {};
+
+  // for (let letter of str) {
+  //   if (str[letter] > 0) {
+  //     return false;
+  //   } else {
+  //     str[letter] = 1;
+  //   }
+  // }
+
+  // return true;
+
+  // My Solution Using No Other Data Structure
+  for (let i=0; i < str.length; i++) {
+    for (let j=i+1; j < str.length; j++) {
+      if (str[i] === str[j]) {
+        return false;
+      }
     }
-    chars.add(str[i]);
   }
+
   return true;
 }
 

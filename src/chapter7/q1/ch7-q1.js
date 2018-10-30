@@ -11,9 +11,9 @@ automator.initializeDeck();
 
 let success = automator.dealInitial();
 if (!success) {
-  console.log('Error. Out of cards.');
+  // console.log('Error. Out of cards.');
 } else {
-  console.log('-- Initial --');
+  // console.log('-- Initial --');
   automator.printHandsAndScore();
   let blackjacks = automator.getBlackJacks();
   if (blackjacks.length > 0) {
@@ -21,13 +21,13 @@ if (!success) {
     for (let i of blackjacks) {
       process.stdout.write(i + ', ');
     }
-    console.log('');
+    // console.log('');
   } else {
     success = automator.playAllHands();
     if (!success) {
-      console.log('Error. Out of cards.');
+      // console.log('Error. Out of cards.');
     } else {
-      console.log('\n-- Completed Game --');
+      // console.log('\n-- Completed Game --');
       automator.printHandsAndScore();
       let winners = automator.getWinners();
       if (winners.length > 0) {
@@ -35,9 +35,9 @@ if (!success) {
         for (let i of winners) {
           process.stdout.write(i + ', ');
         }
-        console.log('');
+        // console.log('');
       } else {
-        console.log('Draw. All players have busted.');
+        // console.log('Draw. All players have busted.');
       }
     }
   }

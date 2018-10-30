@@ -38,3 +38,9 @@ export function encodeSpaces(url) {
 
   return url;
 }
+
+// export function encodeSpaces(url) {
+//   let str = url.trim();
+//   str.replace(' ', '%20');
+//   return str;
+// }

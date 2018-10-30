@@ -19,7 +19,8 @@ export class Call {
 
   /* Play recorded message to the customer. */
   reply(message) {
-    console.log(message);
+    message;
+    // console.log(message);
   }
 
   getRank() {

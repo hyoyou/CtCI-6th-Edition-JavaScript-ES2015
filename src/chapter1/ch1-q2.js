@@ -14,30 +14,63 @@
  * @return {boolean}       True if first and second strings are permutations otherwise false
  */
 export function isPermutationMap(str1, str2) {
-  if (str1.length === 0 || str1.length !== str2.length) {
-    return false;
-  }
+  // if (str1.length === 0 || str1.length !== str2.length) {
+  //   return false;
+  // }
 
-  let chars = new Map();
+  // let chars = new Map();
 
-  for (let i = 0; i < str1.length; ++i) {
-    chars.set(str1[i], chars.get(str1[i]) + 1 || 1); // increment or set to 1
-  }
+  // for (let i = 0; i < str1.length; ++i) {
+  //   chars.set(str1[i], chars.get(str1[i]) + 1 || 1); // increment or set to 1
+  // }
 
-  for (let i = 0; i < str2.length; ++i) {
-    let count = chars.get(str2[i]);
-    if (!count) {
+  // for (let i = 0; i < str2.length; ++i) {
+  //   let count = chars.get(str2[i]);
+  //   if (!count) {
+  //     return false;
+  //   }
+  //   if (count === 1) {
+  //     chars.delete(str2[i]);
+  //   }
+  //   else {
+  //     chars.set(str2[i], count - 1);
+  //   }
+  // }
+
+  // return chars.size === 0;
+
+  let hashMap = buildMap(str1);
+
+  for (let letter of str2) {
+    if (hashMap[letter]) {
+      hashMap[letter]--;
+    } else {
       return false;
     }
-    if (count === 1) {
-      chars.delete(str2[i]);
-    }
-    else {
-      chars.set(str2[i], count - 1);
+  }
+
+  for (let key in hashMap) {
+    if (hashMap[key] !== 0) {
+      return false;
     }
   }
 
-  return chars.size === 0;
+  return true;
+}
+
+function buildMap(str) {
+  let map = {};
+
+  for (let letter of str) {
+    if (map[letter] > 0) {
+      map[letter]++;
+    } else {
+      map[letter] = 1;
+    }
+  }
+
+  return map;
+
 }
 
 /**
